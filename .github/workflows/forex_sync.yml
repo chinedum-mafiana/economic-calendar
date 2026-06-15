@@ -2,7 +2,7 @@ name: Sync Forex Calendar
 on:
   schedule:
     # Runs at 01:00 UTC (2:00 AM Lagos time) every Monday
-    - cron: '45 9 * * 1'
+    - cron: '45 5 * * 1'
   workflow_dispatch: # Allows you to also run it manually via a button
 jobs:
   run-script:
