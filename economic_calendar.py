@@ -1,5 +1,7 @@
 import pandas as pd
 import requests
+import os
+
 # Fetch and Parse Data
 r = requests.get('https://nfs.faireconomy.media/ff_calendar_thisweek.json')
 cal = r.json()
@@ -22,7 +24,7 @@ for _, row in usd_news.iterrows():
         "endTime": end_dt,
         "impact": row['impact']
     })
-# Deploy to your Google Web App URL
-WEBAPP_URL = "https://script.google.com/macros/s/AKfycbw9OAjgMKRXlV_68WvbU8Hw2w0-A_lgJ0VTuxKDIuADLeV6ShUZ-SKyvMc-zNw_v2Sx/exec"
-response = requests.post(WEBAPP_URL, json=payload)
+
+URL = os.environ.get("WEB_URL")
+response = requests.post(URL, json=payload)
 print(f"Status: {response.status_code}, Response: {response.text}")
